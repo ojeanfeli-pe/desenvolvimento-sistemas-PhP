@@ -1,0 +1,29 @@
+Criar um sistema de registro de usuário em PHP. Após a validação dos dados do formulário, o usuário deve ser
+redirecionado para uma página de sucesso ou uma página de erro, dependendo do resultado da validação.
+me ajude a desenvolver em php
+Requisitos:
+
+Criar um arquivo chamado funcoes.php que contenha as seguintes funções:
+
+validar_nome_usuario($nome): Valida se o nome de usuário contém apenas letras e números.
+
+validar_email($email): Valida se o e-mail possui um formato válido.
+
+validar_senha($senha): Valida se a senha tem pelo menos 6 caracteres.
+
+Criar duas páginas PHP diferentes: registro_get.php e registro_post.php.
+
+Ambas as páginas devem incluir o arquivo funcoes.php.
+
+O formulário em cada página deve ser submetido usando os métodos GET e POST, respectivamente.
+
+Implementar a validação dos dados do formulário usando as funções definidas em funcoes.php.
+
+Após a submissão do formulário, o usuário deve ser redirecionado para uma página de sucesso (sucesso.php) ou uma página
+de erro (erro.php), dependendo do resultado da validação.
+
+Na página de sucesso, exibir uma mensagem informando que o registro foi bem-sucedido.
+
+Na página de erro, exibir uma mensagem informando qual campo do formulário não passou na validação.
+
+Passos Adicionais Opcionais:

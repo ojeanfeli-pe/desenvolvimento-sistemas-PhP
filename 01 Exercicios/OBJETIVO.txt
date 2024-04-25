@@ -1,0 +1,9 @@
+                                OBJETIVO DISSO TUDO
+
+● Fixar a criação de pequenos algoritmos para resolução de problemas de lógica de
+programação.
+● Caso tenha dificuldade na resolução de algum exercício, avance para o próximo e
+volte a tentar depois.
+● Evite copiar exemplos da internet, ChatGPT ou mesmo dos colegas. Caso tenha
+dúvidas pergunte, mas evite olhar o algoritmo pronto para que seu cérebro possa
+processar as informações e encontrar a solução do problema
