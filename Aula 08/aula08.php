@@ -1,22 +1,17 @@
 <?php 
 
-    //include
-    //require 
-    
-    include_once 'formulario.php';
+    // include
+    // require
+
+    include_once 'var.php';
 
     echo $maca;
     echo $laranja;
     echo "<br>";
-     
+
     include "funcoes.php";
+    
+    
+    formulario("post", "nome", "email", "telefone", "celular");
 
-    formulario();
 ?>
-
-<form action="" method="get">
-
-    <label for=""></label>
-    <input type="text">
-
-</form>
