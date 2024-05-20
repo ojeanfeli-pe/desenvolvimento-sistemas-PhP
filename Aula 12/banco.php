@@ -76,12 +76,12 @@
 
         $senha = password_hash($senha, PASSWORD_DEFAULT);
 
-        createOnDB("usuario(cod, usuario, nome, senha)",  "(NULL,'$usuario', '$nome', '$senha')");
+        //createOnDB("usuario(cod, usuario, nome, senha)",  "(NULL,'$usuario', '$nome', '$senha')");
 
-        // $q = "INSERT INTO usuario(cod, usuario, nome, senha) VALUES (NULL,'$usuario', '$nome', '$senha')";
-        // $resp = $banco-> query($q);
-        // echo "Query: $q";
-        // echo var_dump($resp);
+         $q = "INSERT INTO usuario(cod, usuario, nome, senha) VALUES (NULL,'$usuario', '$nome', '$senha')";
+         $resp = $banco-> query($q);
+         echo "Query: $q";
+         echo var_dump($resp);
     }
 
     criarUsuario("juninho", "jr", "12345");
