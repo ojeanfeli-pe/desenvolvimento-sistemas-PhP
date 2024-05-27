@@ -3,53 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aula 12 - Banco</title>
+    <title>Telefones</title>
+    <style>
+        table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        }
+
+        td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+        }
+
+        tr:nth-child(even) {
+        background-color: #dddddd;
+        }
+        </style>
 </head>
 <body>
     
+    <h1>SMARTPHONES</h1>
+
     <pre>
     <?php 
-    
+
         require_once "banco.php";
 
-        $usu = $_POST['usuario'] ?? null;
-        $sen = $_POST['senha'] ?? null;
+        $q = "SELECT * FROM smartphone";
+        // $q = "SELECT * FROM empresa";
 
-        if(is_null($usu) || is_null($sen)){
-            require_once "form-login.php";
-        }else{
-            require_once "form-login.php"; // para testes
+        $busca = $banco->query($q);
+        echo print_r($busca);
 
-            echo "~ [Usuario: $usu - Senha: $sen] ~ <br>";
-
-            $busca = buscarUsuario($usu);
-
-            if($busca->num_rows == 0){
-                echo "<br> Usuário não existe";
-            }else{
-                echo "<br> boa";
-                
-                $obj = $busca->fetch_object();
-                echo "<br>" . $obj->usuario;
-                echo "<br>" . $obj->nome;
-                echo "<br>" . $obj->senha;
-
-                // if($sen === $obj->senha){
-                if(password_verify($sen, $obj->senha)){
-                    echo "<br> sucesso!";
-                }else{
-                    echo "<br> sem sucesso :/";
-                }
-
-            }
-
-            
-        }
-
-        // echo "<br>".  password_hash("senha47", PASSWORD_DEFAULT);
-
+        // $obj_smartphone = $busca->fetch_object();
+        // echo print_r($obj_smartphone);
+    
     ?>
     </pre>
+
+
+    <table>
+    <tr>
+        <th>COD</th>
+        <th>NOME</th>
+        <th>EMPRESA</th>
+    </tr>
+    
+    <?php 
+        while ($obj_smartphone = $busca->fetch_object()) { 
+            echo "<tr>";
+            echo "<td>$obj_smartphone->cod</td>";
+            echo "<td>$obj_smartphone->nome</td>";
+            echo "<td>$obj_smartphone->empresa</td>";
+            echo "</tr>";
+        }
+    ?>
+
+    </table>
+
 
 </body>
 </html>
