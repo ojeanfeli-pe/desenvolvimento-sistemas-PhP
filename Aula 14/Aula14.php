@@ -29,42 +29,41 @@
 
     <h1>SMARTPHONES</h1>
 
-    <pre>
     <?php 
-
-        // Inclui o arquivo de conexão com o banco de dados
+        // Inclui o arquivo com funções do banco de dados
         require_once "banco.php";
 
-        // Query para selecionar dados dos smartphones e suas respectivas empresas
+        // Define a consulta SQL para buscar smartphones e suas respectivas empresas
         $q = "SELECT s.cod, s.nome AS smartNome, e.nome AS empresa FROM smartphone s JOIN empresa e ON s.empresa_cod = e.cod";
 
-        // Executa a query no banco de dados
+        // Executa a consulta
         $busca = $banco->query($q);
 
-        // Para debug: exibe o resultado da query
+        // Exibe informações de depuração (para testes)
         echo print_r($busca);
 
+        // Exemplo de como recuperar e exibir dados de um objeto retornados pela consulta
+        // $obj_smartphone = $busca->fetch_object();
+        // echo print_r($obj_smartphone);
     ?>
-    </pre>
 
     <table>
         <tr>
             <th>COD</th>
             <th>NOME</th>
             <th>EMPRESA</th>
-            <th>EDITAR</th>
         </tr>
 
         <?php 
-        // Itera sobre os resultados da query e exibe cada smartphone e sua empresa em uma linha da tabela
-        while ($obj_smartphone = $busca->fetch_object()) { 
-            echo "<tr>";
-            echo "<td>$obj_smartphone->cod</td>";
-            echo "<td>$obj_smartphone->smartNome</td>";
-            echo "<td>$obj_smartphone->empresa</td>";
-            echo "<td><a href=\"editar.php?p=" . $obj_smartphone->cod . "\">editar</a></td>";
-            echo "</tr>";
-        }
+            // Itera sobre os resultados da consulta e exibe cada smartphone em uma linha da tabela
+            while ($obj_smartphone = $busca->fetch_object()) { 
+                echo "<tr>";
+                echo "<td>$obj_smartphone->cod</td>";
+                echo "<td>$obj_smartphone->smartNome</td>";
+                echo "<td>$obj_smartphone->empresa</td>";
+                echo "<td><a href=\"editar.php?p=" . $obj_smartphone->cod ."\">editar</a></td>";
+                echo "</tr>";
+            }
         ?>
 
     </table>

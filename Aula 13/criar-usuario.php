@@ -11,17 +11,20 @@
 
     <?php 
 
+        // Inclui o arquivo com funções do banco de dados
         require_once "banco.php";
 
+        // Obtém os dados do formulário via POST
         $usu = $_POST['usuario'] ?? null;
         $nom = $_POST['nome'] ?? null;
         $sen = $_POST['senha'] ?? null;
 
+        // Verifica se o nome de usuário ou senha não foram fornecidos
         if(is_null($usu) || is_null($sen)){
+            // Se não foram fornecidos, inclui o formulário para criar usuário
             require_once "form-criar-usuario.php";
         }else{
-            // require_once "form-criar-usuario.php"; // para testes
-            // echo "~ [Usuario: $usu - Nome: $nom - Senha: $sen] ~ <br>";
+            // Se foram fornecidos, cria o usuário no banco de dados
             criarUsuario($usu, $nom, $sen, false);
             echo "<h2>Usuario Criado</h2>";            
         }

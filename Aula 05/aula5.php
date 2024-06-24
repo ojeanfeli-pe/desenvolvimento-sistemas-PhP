@@ -1,110 +1,169 @@
 <?php 
 
-    echo "<h2> AULA 4 - FOR </h2>";
+    // Declara o uso de tipos estritos no PHP
+    declare(strict_types=1);
 
-    echo "<h3>FOR</h3>";
-    for ($var = 0; $var < 10; $var++){
-        echo "Viva o PHP! - {$var} <br>";
-    }
-    
-    echo "<h3>WHILE</h3>";
-    
-    echo "0 a 50 - 2 em 2: ";
-    $a = 0;
-    while ($a <= 50):
-        echo " {$a} ";
-        $a += 2;
-    endwhile;
-    
-    
-    while ($a <= 50){
-        echo " {$a} ";
-        $a += 2;
-    }
-    
-    echo "<h3>DO WHILE</h3>";
-    
-    $numero = 86;
-    do {
-        echo "Numero: {$numero} <br>"; 
-        $numero += 3;
-    }while($numero < 85);
-    
-    echo "<h3>LISTA / ARRAY</h3>";
-    $comidas = array("Batata", "Miojo", "Polenta");
-
-    echo $comidas[2];
-    echo "<br>";
-    
-    $comidas[3] = "Arroz";
-    $comidas[1] = 50.3;
-    $comidas[20] = "Feijão";
-    echo print_r($comidas);
-
-    $totalComida = count($comidas);
-    echo "<br> {$totalComida}";
-
-    echo "<br><br>Lista de Compra: ";
-
-    
-    /*for ($i=0; $i < $totalComida; $i++) { 
-        echo "<li>Item {$i}: - " . $comidas[$i];
-    }*/
-
-    foreach ($comidas as $comida){
-        echo "<li>Item: - " . $comida;
+    // Define uma função simples que imprime uma mensagem
+    function nomeBonito(){
+        echo "Testando minha funcao bonita";
     }
 
-
-    /*
-        comidas[2]
-
-        //  [0] => Batata [1] => Miojo [2] => Polenta 
-        [3] => Arroz [20] => Feijão
-        
-        para cada $comida dentro $comidas faça:
-            $comida 
-
-
-    */
-
-
-    echo "<h3>Array dom Indice em Str: </h3>";
-    $pessoa = array("nome" => "Rogerio", "idade" => 15);
-    echo print_r($pessoa);
-
-    foreach ($pessoa as $key => $value) {
-        echo "<li> {$key} - {$value}";
+    // Define uma função que cria um título H1 com o texto fornecido
+    function criaTitulo($texto){
+        echo "<h1>{$texto}</h1>";
     }
 
-    echo "<h3>Array de array: </h3>";
-    $varias_pessoas = array(
-        "pessoa1" => array("nome" => "José", "idade" => 15, "esta" => "feliz"),
-        "pessoa2" => array("nome" => "Maria", "idade" => 17, "esta" => "triste"),
-        "pessoa3" => array("nome" => "Arthur", "idade" => 18, "esta" => "com fome")
-    );
+    // Define uma função que cria um título H2 estilizado com bordas
+    function tituloLegal($texto){
+        echo "<h2>##############</h2>";
+        echo "<h2>## {$texto} ##</h2>";
+        echo "<h2>##############</h2>";
+    }
 
-    foreach($varias_pessoas as $uma_pessoa){
-        echo "<br><br>";
-        // echo print_r($uma_pessoa);
+    // Chama a função criaTitulo duas vezes com argumentos diferentes
+    criaTitulo("Titulo Aula 5 - Funcoes");
+    criaTitulo(76876789);
 
-        foreach ($uma_pessoa as $key => $value) {
-            echo "<li> {$key} - {$value}";
+    // Chama a função tituloLegal com um argumento
+    tituloLegal("Calculando Medias");
+
+    // Define uma função que calcula a média de duas notas e imprime o resultado
+    function calcularMedia($nome, $nota1, $nota2){
+        $media = ($nota1 + $nota2) / 2;
+
+        // Verifica se a média é maior ou igual a 7
+        if($media >= 7){
+            echo "<p>O Aluno(a) {$nome} foi aprovado com média {$media}.</p>";
+        }else{
+            echo "<p>O Aluno(a) {$nome} foi reprovado com média... melhor não saber. ({$media})</p>";
         }
-
-
     }
 
+    // Chama a função calcularMedia com diferentes argumentos
+    calcularMedia("Artur", 3.5, 7.0);
+    calcularMedia("Felipe", "6.5", "7.0");
+    // calcularMedia("Gustavo", "6a", "7u"); // Esta linha causará um erro devido a tipos incorretos
 
+    // Define uma função que soma dois números e imprime o resultado
+    function somar($num1, $num2){
+        $soma = $num1 + $num2;
+        echo "<li>{$num1} + {$num2} = {$soma}";
+    }
 
+    // Define uma função que soma um número variável de argumentos
+    function somarNumeros(...$numeros){
+        echo "<li>";
+        $soma = 0;
+        foreach ($numeros as $num) {
+            $soma += $num;
+            echo "{$num} + ";
+        }
+        echo " = {$soma}";
+    }
 
-    $array_de_arrays = [
-        array("Al Joao"=> ["Joao", "Outro Joao"], "Maria", "José"), 
-        array("Al Joao"=> 20, 30, 17), 
-        array("Al Joao"=> true, true, false)
-    ];
+    echo "Listinha somas:";
+    // Chama a função somar com diferentes argumentos
+    somar(4, 5);
+    somar(40, 35);
+    // Chama a função somarNumeros com um número variável de argumentos
+    somarNumeros(3, 2, 10, 40, 20, 50);
 
-    // $array_de_arrays[0]["Al Joao"]
-    echo print_r($array_de_arrays);
+    // Define uma função que imprime os argumentos adicionais passados
+    function seila($nome, $numero, $texto, ...$numeros){
+        echo "<br>";
+        echo var_dump($numeros);
+    }
+
+    // Chama a função seila com vários argumentos
+    seila("nome", 10, "texto", 5, 7, 9, "texto", true);
+
+    $veradeiro = true;
+
+    // Define uma função condicionalmente
+    if($veradeiro){
+        function pessoa($nome, $idade){
+            echo "<br><br>Nome: {$nome} - Idade: {$idade};";
+        }
+    }
+
+    // Chama a função pessoa se $veradeiro for verdadeiro
+    if($veradeiro){
+        pessoa("William", 25);
+    }
+
+    // Define uma função que contém outra função
+    function ThunderCats(){
+        echo "<br>Thunder Thunder";
+
+        // Define uma função dentro de outra função
+        function HeMan(){
+            echo "<br>Eu tenho a força!";
+        }
+    }
+
+    // Chama a função ThunderCats e depois HeMan
+    ThunderCats();
+    HeMan();
+
+    echo "<br>";
+
+    // Define uma função que modifica o valor de um argumento passado por referência
+    function SomaDePandora(&$numero){
+        $numero += 5;
+        $numero = 99;
+        echo "<br>Variavel Numero: {$numero}";
+    }
+
+    $valor = 10;
+    echo "<br>Variavel Valor: {$valor}";
+    // Chama a função SomaDePandora com o argumento $valor
+    SomaDePandora($valor);
+    echo "<br>Variavel Valor: {$valor}";
+
+    // Define uma função com parâmetros padrão
+    function subtracao($n1=10, $n2=5){
+        $sub = $n1 - $n2;
+        echo "<li> {$n1} - {$n2} = {$sub}";
+    }
+
+    // Chama a função subtracao com diferentes argumentos
+    subtracao();
+    subtracao(20);
+    subtracao(3, 4);
+
+    echo "<br><br>";
+    // Define uma função que exige argumentos de tipo float e retorna um float
+    function divisao(float $n1, float $n2):float{
+        echo var_dump($n1); // Exibe o tipo e valor de $n1
+        echo var_dump($n2); // Exibe o tipo e valor de $n2
+        $divs = ($n1 / $n2);
+        return $divs;
+    }
+
+    echo var_dump(1); // Exibe o tipo e valor do número 1
+    echo var_dump(2); // Exibe o tipo e valor do número 2
+
+    // Chama a função divisao com argumentos float
+    $conta = divisao(10, 5);
+    echo "<br>Conta: " . $conta;
+
+    // Define uma função simples que imprime uma mensagem
+    function estranho(){
+        echo "Ola Mundo!";
+    }
+
+    // Chama a função estranho usando uma variável que contém o nome da função
+    $dr = 'estranho';
+    $dr();
+
+    // Define uma função que modifica o valor de uma variável passada por referência
+    function conta($n1, $n2, &$res){
+        $res = $n1 + $n2;
+    }
+
+    $resultado = 0;
+    // Chama a função conta e modifica $resultado
+    conta(34, 21, $resultado);
+    echo "<br>{$resultado}";
 
 ?>

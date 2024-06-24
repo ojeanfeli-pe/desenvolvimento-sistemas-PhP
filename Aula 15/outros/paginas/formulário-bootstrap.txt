@@ -1,0 +1,24 @@
+<div class="container bg-dark text-white rounded p-3 mt-5">
+    <!-- Título da seção de fazer login -->
+    <h1>Fazer Login</h1>
+
+    <!-- Formulário para fazer login -->
+    <form action="" method="post">
+        <div class="mb-3">
+            <label class="form-label">Endereço de Email</label>
+            <!-- Campo para inserir o endereço de email -->
+            <input type="text" name="usuario" class="form-control">
+            <!-- Texto informativo abaixo do campo de email -->
+            <div class="form-text">Nós nunca compartilharemos seu email com ninguém.</div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Senha</label>
+            <!-- Campo para inserir a senha -->
+            <input type="password" name="senha" class="form-control">
+        </div>
+        <!-- Exibição da resposta após submissão do formulário (como mensagens de erro ou sucesso) -->
+        <p> <?= $resp ?> </p>
+        <!-- Botão de submit para enviar o formulário -->
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>
